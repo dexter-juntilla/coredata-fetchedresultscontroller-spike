@@ -172,10 +172,10 @@
     
     if (title && title.length) {
         // Create Entity
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:[[CoreData sharedInstance] masterObjectContext]];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:[[CoreData sharedInstance] backgroundObjectContext]];
         
         // Initialize Record
-        NSManagedObject *record = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:[[CoreData sharedInstance] masterObjectContext]];
+        NSManagedObject *record = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:[[CoreData sharedInstance] backgroundObjectContext]];
         
         // Populate Record
         [record setValue:title forKey:@"title"];
