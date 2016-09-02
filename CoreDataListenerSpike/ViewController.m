@@ -214,14 +214,23 @@
         [record setValue:title forKey:@"title"];
         [record setValue:[NSDate date] forKey:@"createdDate"];
         [record setValue:@NO forKey:@"done"];
-        // Save Record on background or terminate
-
+        
+        NSError *error = nil;
+        [[CoreData sharedInstance] saveContext];
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }
 }
 
 - (void)updateItemPressed:(NSString *)title didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[self selectedRecord] setValue:title forKey:@"title"];
-    // Save Record on background or terminate
+    
+    NSError *error = nil;
+    [[CoreData sharedInstance] saveContext];
+    if (error) {
+        NSLog(@"%@", error);
+    }
 }
 
 @end
